@@ -1,0 +1,35 @@
+node {
+	stage ('Download Source'){
+		git "https://github.com/maneesh-ms/DockerTrial.git"
+	}
+	stage ('Edit Source'){
+		sh "sed -i -e 's/browser=.*/browser='$browser'/g' runconfiguration.properties"
+		sh "sed -i -e 's/gridRun=.*/gridRun=true/g' runconfiguration.properties"
+	}
+	stage ('Clean'){
+			sh "mvn clean"
+	}
+	stage ('Compile Framework'){
+			sh "mvn compile"
+	}
+	stage ('Compile Test'){
+			sh "mvn test-compile"
+	}
+	stage ('Run Test'){
+			sh "mvn clean test -Dsurefire.suiteXmlFiles=./src/test/java/resources/testngxmls/web/web_all_tests_suite.xml"
+	}
+	stage('Reports') {
+        steps {
+            script {
+                allure([
+                        includeProperties: false,
+                        jdk: '',
+                        properties: [],
+                        reportBuildPolicy: 'ALWAYS',
+                        results: [[path: 'target/allure-results']]
+                ])
+            }
+        }
+	    
+	}
+}
