@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All tests for Mobile Application" parallel="false">
+  <test thread-count="1" parallel="false" name="Login functionality">
+    <classes>
+      <class name="tests.mobility.login.ExistingUserLoginTest"/>
+    </classes>
+  </test>
+</suite>

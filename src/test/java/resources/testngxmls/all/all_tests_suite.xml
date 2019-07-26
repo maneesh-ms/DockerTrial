@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All tests for Mobile and Web Application">
+
+  <test thread-count="1" parallel="false" name="All tests for the web application">
+    <classes>
+      <class name="tests.web.login.ExistingUserLoginTest"/>
+      <class name="tests.web.registration.NewUserRegistrationTest"/>
+    </classes>
+  </test>
+
+  <test thread-count="1"  parallel="false" name="All tests for the mobile application">
+    <classes>
+      <class name="tests.mobility.login.ExistingUserLoginTest"/>
+    </classes>
+  </test>
+
+</suite>
