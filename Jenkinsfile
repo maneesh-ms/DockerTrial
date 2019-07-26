@@ -16,8 +16,8 @@ pipeline {
 
     stage('Edit Source'){
          steps {
-    		sh 'sed -i -e 's/browser=.*/browser='$browser'/g' runconfiguration.properties'
-    		sh 'sed -i -e 's/gridRun=.*/gridRun=true/g' runconfiguration.properties'
+    		sh "sed -i -e 's/browser=.*/browser='$browser'/g' runconfiguration.properties"
+    		sh "sed -i -e 's/gridRun=.*/gridRun=true/g' runconfiguration.properties"
     	 }
     }
 
