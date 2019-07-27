@@ -19,9 +19,9 @@ public class ExistingUserLoginTest extends BaseTest {
 
         return new Object[][]{
         //Data-set 1
-        {"mnsh.nair@gmail.com", "test@123"},
-        //Data-set 2 (This is actually invalid credentials to demonstrate a failed result.
-        {"anna.basseil@gmail.com", "mypassword"}
+            {"mnsh.nair@gmail.com", "test@123"},
+            //Data-set 2 (This is actually invalid credentials to demonstrate a failed result.
+            {"vishnuchandar07@gmail.com", "canarabank"}
         };
     }
 
