@@ -45,38 +45,4 @@ pipeline {
             }
         }
     }
-    post {
-            always {
-
-                echo 'One way or another, Build have finished.'
-                echo 'Generating Report'
-                script {
-                    allure([
-                        includeProperties: false,
-                        jdk: '',
-                        properties: [],
-                        reportBuildPolicy: 'ALWAYS',
-                        results: [[path: 'target/allure-results']]
-                    ])
-                 }
-
-                echo 'Sending Emails'
-                mail to: 'maneesh.ms@oracle.com',
-                subject: "Job Completed: ${currentBuild.fullDisplayName}",
-                body: "Please find results at ${env.BUILD_URL}"
-                //deleteDir() /* clean up our workspace */
-            }
-            success {
-                //echo 'Build succeeeded this time!'
-            }
-            unstable {
-                //echo 'Build is unstable :/'
-            }
-            failure {
-                //echo 'I failed :('
-            }
-            changed {
-                //echo 'Things were different before...'
-            }
-    }
 }
