@@ -3,6 +3,7 @@ pipeline {
     options {
         skipDefaultCheckout true
     }
+    def build_ok = true
     stages {
         stage('Download Source') { 
             steps { 
@@ -34,10 +35,15 @@ pipeline {
                 sh "mvn test-compile"
             }
         }
-	    stage('Run Test') {
-            steps {
-                sh "mvn clean test -Dsurefire.suiteXmlFiles=./src/test/java/resources/testngxmls/web/web_all_tests_suite.xml"
+        try {
+            stage('Run Test') {
+                steps {
+                    sh "mvn clean test -Dsurefire.suiteXmlFiles=./src/test/java/resources/testngxmls/web/web_all_tests_suite.xml"
+                }
             }
+        } catch(e) {
+            build_ok = false
+            echo e.toString()
         }
         stage('reports') {
             steps {
@@ -52,5 +58,11 @@ pipeline {
                 }
             }
         }
+    }
+    if(build_ok) {
+        currentBuild.result = "SUCCESS"
+    } else
+    {
+        currentBuild.result = "FAILURE"
     }
 }
