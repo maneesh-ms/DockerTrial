@@ -46,6 +46,7 @@ pipeline {
     }
 
     post {
+          stage('Reporting') {
                 always {
 
                     echo 'One way or another, Build have finished.'
@@ -66,5 +67,6 @@ pipeline {
                     body: "Please find results at ${env.BUILD_URL}"
                     //deleteDir() /* clean up our workspace */
                 }
+          }
     }
 }
