@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All tests for Web Application" parallel="classes">
+  <test thread-count="1" parallel="false" name="Existing user and New Registration">
+    <classes>
+      <class name="tests.web.login.ExistingUserLoginTest"/>
+    </classes>
+  </test>
+</suite>
