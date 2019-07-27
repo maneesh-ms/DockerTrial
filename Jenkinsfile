@@ -66,17 +66,5 @@ pipeline {
                     body: "Please find results at ${env.BUILD_URL}"
                     //deleteDir() /* clean up our workspace */
                 }
-                success {
-                    //echo 'Build succeeeded this time!'
-                }
-                unstable {
-                    //echo 'Build is unstable :/'
-                }
-                failure {
-                    //echo 'I failed :('
-                }
-                changed {
-                    //echo 'Things were different before...'
-                }
     }
 }
