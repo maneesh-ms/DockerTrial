@@ -38,7 +38,7 @@ pipeline {
         }
         stage('Run Test') {
             steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    //catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                     //sh "mvn clean test -Dsurefire.suiteXmlFiles=./src/test/java/resources/testngxmls/web/web_all_tests_suite.xml"
                     sh "exit 1"
                 }
